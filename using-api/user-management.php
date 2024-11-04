@@ -45,7 +45,7 @@ foreach($error_message as $message){
         </thead>
 
         <tbody>
-            <?php if(isset($getAllUsers)): ?>
+            <?php if(!isset($getAllUsers['error']) && isset($getAllUsers)): ?>
                 <?php foreach ($getAllUsers as $user): ?>
 
                    <tr>
@@ -58,6 +58,10 @@ foreach($error_message as $message){
                    </tr>
             
                 <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td><?php echo $getAllUsers['error']; ?></td>
+                </tr>
             <?php endif; ?>
         </tbody>
     </table>
