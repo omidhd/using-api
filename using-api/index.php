@@ -87,8 +87,16 @@ $client = new ApiClient();
 // Get users
 if(isset($_POST['getUser'])){
     $id = $_POST['id'];
-    $getAllUsers[] = $client->getUser($id);
+    $getUser = $client->getUser($id);
+    $getAllUsers = [$getUser];
     $back = true;
+
+    // if No user found
+    if(isset($getUser['error'])){
+        $_SESSION['e_get_user'] = $getUser['error'];
+        header("Location:". $_SERVER['PHP_SELF']);
+        exit();
+    }
 }else{
     $getAllUsers = $client->getAllUsers();
 }
