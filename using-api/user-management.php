@@ -17,7 +17,7 @@ foreach($success_message as $message){
     }
 }
 // show session error message
-$error_message = ['e_add_user', 'e_update_user', 'e_delete_user'];
+$error_message = ['e_get_user', 'e_add_user', 'e_update_user', 'e_delete_user'];
 foreach($error_message as $message){
     if(isset($_SESSION[$message])){
         echo "<div class='message error'>" . htmlspecialchars($_SESSION[$message]) . "</div>";
